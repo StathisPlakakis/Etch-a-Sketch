@@ -1,4 +1,7 @@
 const container = document.querySelector(".container");
+container.style.backgroundColor = 'red';
+container.style.height = '500px';
+container.style.width = '500px';
 
 for (let j = 0; j < 16; j++) {
     const div = document.createElement("div");

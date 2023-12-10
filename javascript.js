@@ -28,3 +28,8 @@ squares.forEach((square) => {
         square.style.backgroundColor = 'black';
     })
 })
+
+const button = document.createElement('button');
+button.textContent = "New Grid";
+button.classList.add("btn");
+document.body.insertBefore(button, container);

@@ -43,6 +43,7 @@ function createGrid(n) {
         div.style.width = `${x / n}px`;
         div.style.backgroundColor = "white";
         div.style.border = "1px solid black";
+        div.style.boxSizing = "border-box";
         grid.appendChild(div);
     }
 

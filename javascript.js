@@ -6,7 +6,7 @@ container.style.width = `${x}px`;
 createGrid(16);
 
 const button = document.createElement('button');
-button.textContent = "New Grid";
+button.textContent = "Black & White Grid";
 button.classList.add("btn");
 document.body.insertBefore(button, container);
 button.addEventListener('click', () => {
@@ -24,6 +24,28 @@ button.addEventListener('click', () => {
     }
 
     createGrid(newGrid);
+    
+});
+
+const button2 = document.createElement('button');
+button2.textContent = "Colorful Grid";
+button.classList.add("btn2");
+document.body.insertBefore(button2, container);
+button2.addEventListener('click', () => {
+    let newGrid2 = parseInt(prompt('Choose the number of squares per side for the new grid.'))
+
+    while ( newGrid2 <= 0 ||
+        newGrid2 > 100 ||
+        isNaN(newGrid2) === true) {
+            newGrid2 = prompt('You should choose a NUMBER between 1 & 100');
+        }
+    
+    
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    createGrid(newGrid2);
     
 });
 

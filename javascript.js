@@ -32,26 +32,26 @@ function createGrid(n) {
         const div = document.createElement("div");
         div.classList.add("grid");
         container.appendChild(div);
-    }
+        for (let i = 0; i < n; i++) {
+            const div2 = document.createElement("div");
+            div2.style.height = `${x / n}px`;
+            div2.style.width = `${x / n}px`;
+            div2.style.backgroundColor = "rgba(255,255,255,0)";
+            div2.style.border = "1px solid black";
+            div2.style.boxSizing = "border-box";
+            div2.classList.add("square");
+            div.appendChild(div2);
 
-    const grids = document.querySelectorAll(".grid");
-    grids.forEach((grid) => {
-    for (let i = 0; i < n; i++) {
-        const div = document.createElement("div");
-        div.classList.add("square");
-        div.style.height = `${x / n}px`;
-        div.style.width = `${x / n}px`;
-        div.style.backgroundColor = "white";
-        div.style.border = "1px solid black";
-        div.style.boxSizing = "border-box";
-        grid.appendChild(div);
+        }
     }
 
     const squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = 'black';
-    })
-})
+        square.addEventListener('mouseover', () => {
+            let alpha = parseFloat(square.style.backgroundColor.split(",")[3]);
+            alpha += 0.1;
+            square.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+            
+        })
 })
 }

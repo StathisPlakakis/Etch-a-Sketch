@@ -1,4 +1,5 @@
 let x = 960;
+const btns = document.querySelector(".btns");
 const container = document.querySelector(".container");
 container.style.height = `${x}px`;
 container.style.width = `${x}px`;
@@ -8,7 +9,7 @@ createGrid(16);
 const button = document.createElement('button');
 button.textContent = "Black & White Grid";
 button.classList.add("btn");
-document.body.insertBefore(button, container);
+btns.appendChild(button);
 button.addEventListener('click', () => {
     let newGrid = parseInt(prompt('Choose the number of squares per side for the new grid.'))
 
@@ -29,8 +30,8 @@ button.addEventListener('click', () => {
 
 const button2 = document.createElement('button');
 button2.textContent = "Colorful Grid";
-button.classList.add("btn2");
-document.body.insertBefore(button2, container);
+button2.classList.add("btn2");
+btns.appendChild(button2);
 button2.addEventListener('click', () => {
     let newGrid2 = parseInt(prompt('Choose the number of squares per side for the new grid.'))
 
@@ -45,11 +46,11 @@ button2.addEventListener('click', () => {
         container.removeChild(container.firstChild);
     }
 
-    createGrid(newGrid2);
+    createGrid(newGrid2, false);
     
 });
 
-function createGrid(n) {
+function createGrid(n, c=true) {
     for (let j = 0; j < n; j++) {
         const div = document.createElement("div");
         div.classList.add("grid");
@@ -68,16 +69,27 @@ function createGrid(n) {
     }
 
     const squares = document.querySelectorAll('.square');
-    squares.forEach((square) => {
-        square.addEventListener('mouseover', () => {
-            let alpha = parseFloat(square.style.backgroundColor.split(",")[3]);
-            alpha += 0.1;
-            square.style.backgroundColor = `rgba(0,0,0,${alpha})`;
-            
+    if (c === true) {
+        squares.forEach((square) => {
+            square.addEventListener('mouseover', () => {
+                let alpha = parseFloat(square.style.backgroundColor.split(",")[3]);
+                alpha += 0.1;
+                square.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+                
+            })
+            square.addEventListener('click', () => {
+                square.style.backgroundColor = `rgba(0,0,0,1)`;
+                
+            })
+    })
+    }else if (c === false) {
+        squares.forEach((square) => {
+            square.addEventListener('mouseover', () => {
+                const r = Math.floor(Math.random() * (255 - 0 + 1));
+                const g = Math.floor(Math.random() * (255 - 0 + 1));
+                const b = Math.floor(Math.random() * (255 - 0 + 1));
+                square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            })
         })
-        square.addEventListener('click', () => {
-            square.style.backgroundColor = `rgba(0,0,0,1)`;
-            
-        })
-})
+    }
 }

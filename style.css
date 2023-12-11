@@ -21,3 +21,14 @@ body {
     font-size: 20px;
 }
 
+.btn2{
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(193, 50, 209);
+    color: white;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    font-size: 25px;
+}
+

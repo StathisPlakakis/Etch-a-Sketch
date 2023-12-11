@@ -53,5 +53,9 @@ function createGrid(n) {
             square.style.backgroundColor = `rgba(0,0,0,${alpha})`;
             
         })
+        square.addEventListener('click', () => {
+            square.style.backgroundColor = `rgba(0,0,0,1)`;
+            
+        })
 })
 }
